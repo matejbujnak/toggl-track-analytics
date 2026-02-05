@@ -23,7 +23,10 @@ export const useTogglStore = defineStore('toggl', () => {
     if (!durationStr) return 0
     const parts = durationStr.split(':')
     if (parts.length === 3) {
-      return parseInt(parts[0]) * 3600 + parseInt(parts[1]) * 60 + parseInt(parts[2])
+      const h = parseInt(parts[0] || '0')
+      const m = parseInt(parts[1] || '0')
+      const s = parseInt(parts[2] || '0')
+      return h * 3600 + m * 60 + s
     }
     return 0
   }

@@ -16,12 +16,19 @@ export interface CSVTimeEntry {
 
 export function parseCSV(csvText: string): CSVTimeEntry[] {
   const lines = csvText.split('\n')
-  const headers = parseCSVLine(lines[0])
+  if (lines.length === 0) return []
+
+  const headerLine = lines[0]
+  if (!headerLine) return []
+
+  const headers = parseCSVLine(headerLine)
 
   const entries: CSVTimeEntry[] = []
 
   for (let i = 1; i < lines.length; i++) {
-    const line = lines[i].trim()
+    const rawLine = lines[i]
+    if (!rawLine) continue
+    const line = rawLine.trim()
     if (!line) continue
 
     const values = parseCSVLine(line)
