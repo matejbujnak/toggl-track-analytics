@@ -40,5 +40,10 @@
   },
   "engines": {
     "node": "^20.19.0 || >=22.12.0"
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true,
+    "printWidth": 100
   }
 }
