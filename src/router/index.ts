@@ -9,14 +9,9 @@ const router = createRouter({
       component: () => import('../views/DashboardView.vue'),
     },
     {
-      path: '/reports',
-      name: 'reports',
-      component: () => import('../views/ReportsView.vue'),
-    },
-    {
-      path: '/settings',
-      name: 'settings',
-      component: () => import('../views/SettingsView.vue'),
+      path: '/raw',
+      name: 'raw',
+      component: () => import('../views/RawDataView.vue'),
     },
   ],
 })

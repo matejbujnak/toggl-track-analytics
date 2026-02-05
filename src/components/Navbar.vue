@@ -8,8 +8,7 @@ import { RouterLink } from 'vue-router'
       <RouterLink to="/" class="brand">Toggl Track Analytics</RouterLink>
       <div class="links">
         <RouterLink to="/" active-class="active">Dashboard</RouterLink>
-        <RouterLink to="/reports" active-class="active">Reports</RouterLink>
-        <RouterLink to="/settings" active-class="active">Settings</RouterLink>
+        <RouterLink to="/raw" active-class="active">Raw Data</RouterLink>
       </div>
     </div>
   </nav>

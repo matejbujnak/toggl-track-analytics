@@ -1,6 +1,7 @@
 export interface TimeEntry {
   id: number
   description: string
+  client?: string
   start: string
   stop: string
   duration: number

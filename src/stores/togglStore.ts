@@ -61,6 +61,7 @@ export const useTogglStore = defineStore('toggl', () => {
         return {
           id: index + 1,
           description: row.Description || '(No description)',
+          client: row.Client || '',
           start: `${row.StartDate}T${row.StartTime}`,
           stop: `${row.EndDate}T${row.EndTime}`,
           duration: parseDurationString(row.Duration),
