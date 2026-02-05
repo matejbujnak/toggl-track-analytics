@@ -1,0 +1,35 @@
+name: Update Toggl Data
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # Run every day at midnight (UTC)
+  workflow_dispatch: # Allow manual trigger
+
+permissions:
+  contents: write
+
+jobs:
+  update-data:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run Sync Script
+        env:
+          TOGGL_API_TOKEN: ${{ secrets.TOGGL_API_TOKEN }}
+          TOGGL_WORKSPACE_ID: ${{ secrets.TOGGL_WORKSPACE_ID }}
+        run: node scripts/sync-toggl.js
+
+      - name: Commit and Push Changes
+        run: |
+          git config --global user.name "GitHub Actions Bot"
+          git config --global user.email "actions@github.com"
+          git add public/data/*.csv
+          git commit -m "chore: update toggl data [skip ci]" || echo "No changes to commit"
+          git push
